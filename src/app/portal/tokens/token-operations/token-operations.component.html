@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="tokenForm">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <input type="text" id="id" formControlName="id" class="form-control" value="">
+            <button type="button" class="btn btn-success ml-3" (click)="onLoad()">Load Token</button>
+          </div>
+        </div>
+      </div>
+      <div id="token-data" *ngIf="token != null">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group form-inline">
+              <label for="tokenType">Token Type</label>
+              <select id="tokenType" formControlName="tokenType" class="form-control ml-3" [value]="tokenType[token.tokenType]">
+                <option *ngFor="let type of tokenType.values()">{{type}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group form-inline">
+              <label for="tokenTypeState">Token Type State</label>
+              <select id="tokenTypeState" formControlName="tokenTypeState" class="form-control ml-3" [value]="tokenTypeState[token.tokenTypeState]">
+                <option *ngFor="let tokenState of tokenTypeState.values()">{{tokenState}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group form-inline">
+              <label for="creationDate">Creation Date</label>
+              <input type="date" id="creationDate" formControlName="creationDate" class="form-control ml-3" [value]="token.creationDate | date:'yyyy-MM-dd'">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group form-inline">
+              <label for="expirationDate">Expiration Date</label>
+              <input type="date" id="expirationDate" formControlName="expirationDate" class="form-control ml-3" [value]="token.expirationDate | date:'yyyy-MM-dd'">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="button" class="btn btn-success" (click)="onSave()" [disabled]="!tokenForm.valid">Save</button>
+            <button type="button" class="btn btn-success" (click)="onSign()" [disabled]="!tokenForm.valid">Sign Token</button>
+            <button type="button" class="btn btn-warning" (click)="onReset()">Reset Data</button>
+            <button type="button" class="btn btn-danger" (click)="onExpire()" [disabled]="!tokenForm.value['id']">Expire Token</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

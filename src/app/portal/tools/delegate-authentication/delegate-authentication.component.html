@@ -1,0 +1,52 @@
+<div class="container">
+    <form [formGroup]="delegateForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <label for="sessionSubtype">Session Subtype</label>
+            <select id="sessionSubtype" formControlName="sessionSubtype" class="form-control ml-3">
+              <option *ngFor="let subtype of sessionSubtypes" [value]="subtype">{{subtype}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <label for="sessionId">Session Id</label>
+            <input type="number" id="sessionId" formControlName="sessionId" class="form-control ml-3">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <label for="randomSessionId">Randomized Session Id</label>
+            <input type="number" id="randomSessionId" formControlName="randomSessionId" class="form-control ml-3">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <label for="userId">User Id</label>
+            <input type="number" id="userId" formControlName="userId" class="form-control ml-3">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password" class="form-control ml-3" autocomplete="new-password">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-success" [disabled]="!delegateForm.valid">Submit</button>
+          <button type="button" class="btn btn-warning" (click)="onReset()">Reset Data</button>
+        </div>
+      </div>
+    </form>
+  </div>

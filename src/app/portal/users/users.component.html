@@ -1,0 +1,64 @@
+<div class="container">
+  <form [formGroup]="userForm">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group form-inline">
+          <label for="id">User id</label>
+          <input type="text" id="id" formControlName="id" class="form-control ml-3" value="">
+          <button type="button" class="btn btn-success ml-3" (click)="onLoad()" [disabled]="user != null">Load User</button>
+        </div>
+      </div>
+    </div>
+    <div id="user-data" *ngIf="user != null">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <label for="password">User password</label>
+            <input type="password" id="password" formControlName="password" class="form-control ml-3" [value]="user.password">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <label for="creationDate">Creation Date</label>
+            <input type="date" id="creationDate" formControlName="creationDate" class="form-control ml-3" [value]="user.creationDate | date:'yyyy-MM-dd'">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <label for="cancellationDate">Cancellation Date</label>
+            <input type="date" id="cancellationDate" formControlName="cancellationDate" class="form-control ml-3" [value]="user.cancellationDate | date:'yyyy-MM-dd'">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <label for="lastActivityDate">Last Activity Date</label>
+            <input type="date" id="lastActivityDate" formControlName="lastActivityDate" class="form-control ml-3" [value]="user.lastActivityDate | date:'yyyy-MM-dd'">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group form-inline">
+            <label for="userState">User State</label>
+            <select id="userState" formControlName="userState" class="form-control ml-3" [value]="userState[user.userState]">
+              <option *ngFor="let userState of userState.values()">{{userState}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="button" class="btn btn-success" (click)="onSave()" [disabled]="!userForm.valid">Save</button>
+          <button type="button" class="btn btn-warning" (click)="onReset()">Reset Data</button>
+          <button type="button" class="btn btn-danger" (click)="onDelete()" [disabled]="!userForm.value['id']">Delete User</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
