@@ -5,4 +5,12 @@ export class MobileService {
 
   constructor() { }
 
+  sendMobileRequestV1(mobileRequest: any) {
+    console.log("send request: " + mobileRequest);
+  }
+
+  sendMobileRequestV3(mobileRequest: any) {
+    console.log(mobileRequest);
+  }
+
 }

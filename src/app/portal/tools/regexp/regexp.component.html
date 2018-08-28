@@ -1,3 +1,26 @@
-<p>
-  regexp works!
-</p>
+<div class="container">
+  <form [formGroup]="regexpForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group form-inline">
+          <label for="regex">Regular Expression</label>
+          <input type="text" id="regex" formControlName="regex" class="form-control ml-3">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group form-inline">
+          <label for="textVal">Value to test</label>
+          <input type="text" id="textVal" formControlName="textVal" class="form-control ml-3">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-success" [disabled]="!regexpForm.valid">Sign</button>
+        <button type="button" class="btn btn-warning" (click)="onReset()">Reset Data</button>
+      </div>
+    </div>
+  </form>
+</div>

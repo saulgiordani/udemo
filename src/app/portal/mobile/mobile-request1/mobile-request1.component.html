@@ -1,3 +1,42 @@
-<p>
-  mobile-request1 works!
-</p>
+<div class="container">
+  <form [formGroup]="mobileRequestForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group form-inline">
+          <label for="username">Username</label>
+          <input type="text" id="username" formControlName="username" class="form-control ml-3">
+        </div>
+        <div class="form-group form-inline">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" class="form-control ml-3" autocomplete="new-password">
+        </div>
+        <div class="form-group form-inline">
+          <label for="app">App</label>
+          <input type="text" id="app" formControlName="app" class="form-control ml-3">
+        </div>
+        <div class="form-group form-inline">
+          <label for="appVersion">App version</label>
+          <input type="text" id="appVersion" formControlName="appVersion" class="form-control ml-3">
+        </div>
+        <div class="form-group form-inline">
+          <label for="os">Os</label>
+          <input type="text" id="os" formControlName="os" class="form-control ml-3">
+        </div>
+        <div class="form-group form-inline">
+          <label for="osVersion">Os version</label>
+          <input type="text" id="osVersion" formControlName="osVersion" class="form-control ml-3">
+        </div>
+        <div class="form-group form-inline">
+          <label for="deviceId">Device id</label>
+          <input type="text" id="deviceId" formControlName="deviceId" class="form-control ml-3">
+        </div>
+        <div class="form-group form-inline">
+          <label for="deviceType">Device type</label>
+          <input type="text" id="deviceType" formControlName="deviceType" class="form-control ml-3">
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!mobileRequestForm.valid">Send request</button>
+        <button type="button" class="btn btn-warning" (click)="onReset()">Reset Data</button>
+      </div>
+    </div>
+  </form>
+</div>

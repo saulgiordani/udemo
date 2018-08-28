@@ -16,34 +16,18 @@
             <label for="password">User password</label>
             <input type="password" id="password" formControlName="password" class="form-control ml-3" [value]="user.password">
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
           <div class="form-group form-inline">
             <label for="creationDate">Creation Date</label>
             <input type="date" id="creationDate" formControlName="creationDate" class="form-control ml-3" [value]="user.creationDate | date:'yyyy-MM-dd'">
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
           <div class="form-group form-inline">
             <label for="cancellationDate">Cancellation Date</label>
             <input type="date" id="cancellationDate" formControlName="cancellationDate" class="form-control ml-3" [value]="user.cancellationDate | date:'yyyy-MM-dd'">
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
           <div class="form-group form-inline">
             <label for="lastActivityDate">Last Activity Date</label>
             <input type="date" id="lastActivityDate" formControlName="lastActivityDate" class="form-control ml-3" [value]="user.lastActivityDate | date:'yyyy-MM-dd'">
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
           <div class="form-group form-inline">
             <label for="userState">User State</label>
             <select id="userState" formControlName="userState" class="form-control ml-3" [value]="userState[user.userState]">
