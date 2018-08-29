@@ -10,8 +10,8 @@ import { TokenService } from '../token.service';
 })
 export class TokenOperationsComponent implements OnInit {
   token: Token;
-  tokenType = TokenType;
-  tokenTypeState = TokenTypeState;
+  tokenTypes: string[] = ['GRIDCARD', 'CAP_DEDICATED_SMARTCARD', 'SMS_OUT'];
+  tokenTypeStates: string[] = ['INITIAL', 'ACTIVE', 'BLOCKED', 'CANCELLED', 'EXPIRED'];
   tokenForm: FormGroup;
 
   constructor(private tokenService: TokenService) { }
@@ -45,18 +45,12 @@ export class TokenOperationsComponent implements OnInit {
   }
 
   private initForm() {
-    let id = '';
-    let tokenType: TokenType;
-    let tokenTypeState: TokenTypeState;
-    let creationDate: Date;
-    let expirationDate: Date;
-
     this.tokenForm = new FormGroup({
-      'id': new FormControl(id, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      'tokenType': new FormControl({value: tokenType, disabled: true}),
-      'tokenTypeState': new FormControl(tokenTypeState),
-      'creationDate': new FormControl(creationDate),
-      'expirationDate': new FormControl(expirationDate)
+      'id': new FormControl(null, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      'tokenType': new FormControl({value: '', disabled: true}),
+      'tokenTypeState': new FormControl(''),
+      'creationDate': new FormControl(null),
+      'expirationDate': new FormControl(null)
     });
   }
 

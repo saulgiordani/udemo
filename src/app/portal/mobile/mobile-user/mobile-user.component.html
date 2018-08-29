@@ -1,3 +1,51 @@
-<p>
-  mobile-user works!
-</p>
+<div class="container">
+  <form [formGroup]="mobileUserForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+      <label for="username" class="col-sm-2 col-form-label">Username</label>
+      <div class="col-sm-4">
+        <input type="text" id="username" formControlName="username" class="form-control form-control-sm">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="password" class="col-sm-2 col-form-label">Device id</label>
+      <div class="col-sm-4">
+        <input type="text" id="deviceId" formControlName="deviceId" class="form-control form-control-sm" autocomplete="new-password">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="mobilePassword" class="col-sm-2 col-form-label">Mobile password</label>
+      <div class="col-sm-4">
+        <input type="password" id="mobilePassword" formControlName="mobilePassword" class="form-control form-control-sm">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-4">
+        <input type="password" id="password" formControlName="password" class="form-control form-control-sm">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Token choice</label>
+      <div class="custom-control custom-radio ml-3">
+        <input type="radio" id="gridcard" name="tokenChoice" class="custom-control-input" formControlName="tokenChoice" value="gridcard">
+        <label class="custom-control-label" for="gridcard">Gridcard</label>
+      </div>
+      <div class="custom-control custom-radio ml-3">
+        <input type="radio" id="otan" name="tokenChoice" class="custom-control-input" formControlName="tokenChoice" value="otan">
+        <label class="custom-control-label" for="otan">OTan</label>
+      </div>
+      <div class="custom-control custom-radio ml-3">
+        <input type="radio" id="sms" name="tokenChoice" class="custom-control-input" formControlName="tokenChoice" value="sms">
+        <label class="custom-control-label" for="sms">SMS</label>
+      </div>
+    </div>
+    <div *ngIf="mobileUserForm.value['tokenChoice'] === 'sms'" class="form-group row">
+      <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+      <div class="col-sm-4">
+        <input type="text" id="phone" formControlName="phone" class="form-control form-control-sm">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-sm btn-success" [disabled]="!mobileUserForm.valid">Prepare user</button>
+    <button type="button" class="btn btn-sm btn-warning" (click)="onReset()">Reset Data</button>
+  </form>
+</div>

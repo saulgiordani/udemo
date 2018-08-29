@@ -38,16 +38,11 @@ export class ReaderUpdateComponent implements OnInit {
   }
 
   private initForm() {
-    let id = '';
-    let validFrom = Date;
-    let validTo: Date;
-    let isActive: boolean;
-
     this.readerForm = new FormGroup({
-      'id': new FormControl({value: id, disabled: this.reader != null}, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      'validFrom': new FormControl(validFrom, Validators.required),
-      'validTo': new FormControl(validTo, Validators.required),
-      'isActive': new FormControl(isActive, Validators.required)
+      'id': new FormControl({value: null, disabled: this.reader != null}, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      'validFrom': new FormControl(null, Validators.required),
+      'validTo': new FormControl(null, Validators.required),
+      'isActive': new FormControl(false, Validators.required)
     });
   }
 

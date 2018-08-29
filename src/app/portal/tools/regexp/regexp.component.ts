@@ -21,12 +21,9 @@ export class RegexpComponent implements OnInit {
   }
 
   private initForm() {
-    let regex: string;
-    let textVal: string;
-
     this.regexpForm = new FormGroup({
-      'regex' : new FormControl(regex, Validators.required),
-      'textVal' : new FormControl(textVal, Validators.required)
+      'regex' : new FormControl('', Validators.required),
+      'textVal' : new FormControl('', Validators.required)
     })
   }
 

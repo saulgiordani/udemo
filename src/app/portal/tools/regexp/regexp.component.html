@@ -1,25 +1,21 @@
 <div class="container">
   <form [formGroup]="regexpForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="form-group form-inline">
-          <label for="regex">Regular Expression</label>
-          <input type="text" id="regex" formControlName="regex" class="form-control ml-3">
-        </div>
+    <div class="form-group row">
+      <label for="regex" class="col-sm-2 col-form-label">Regexp</label>
+      <div class="col-sm-4">
+        <input type="text" id="regex" formControlName="regex" class="form-control form-control-sm">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="textVal" class="col-sm-2 col-form-label">Value to test</label>
+      <div class="col-sm-4">
+        <input type="text" id="textVal" formControlName="textVal" class="form-control form-control-sm">
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <div class="form-group form-inline">
-          <label for="textVal">Value to test</label>
-          <input type="text" id="textVal" formControlName="textVal" class="form-control ml-3">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <button type="submit" class="btn btn-success" [disabled]="!regexpForm.valid">Sign</button>
-        <button type="button" class="btn btn-warning" (click)="onReset()">Reset Data</button>
+        <button type="submit" class="btn btn-sm btn-success" [disabled]="!regexpForm.valid">Sign</button>
+        <button type="button" class="btn btn-sm btn-warning" (click)="onReset()">Reset Data</button>
       </div>
     </div>
   </form>

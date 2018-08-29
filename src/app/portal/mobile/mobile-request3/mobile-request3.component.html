@@ -1,19 +1,224 @@
 <!-- Nav tabs -->
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
-    </li>
-  </ul>
-  
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div class="tab-pane container active" id="home">...</div>
-    <div class="tab-pane container fade" id="menu1">...</div>
-    <div class="tab-pane container fade" id="menu2">...</div>
+<ul class="nav nav-tabs mb-3">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#activation">Activation request</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#login">Login request</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane container active" id="activation">
+    <form [formGroup]="activationRequestForm" (ngSubmit)="onSubmitActivationRequest()">
+      <div class="form-group row">
+        <label for="securityLevelAct" class="col-sm-2 col-form-label">Security level</label>
+        <div class="col-sm-4">
+          <input type="text" id="securityLevelAct" formControlName="securityLevel" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="osAct" class="col-sm-2 col-form-label">Os</label>
+        <div class="col-sm-4">
+          <input type="text" id="osAct" formControlName="os" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="osVersionAct" class="col-sm-2 col-form-label">Os version</label>
+        <div class="col-sm-4">
+          <input type="text" id="osVersionAct" formControlName="osVersion" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="deviceIdAct" class="col-sm-2 col-form-label">Device id</label>
+        <div class="col-sm-4">
+          <input type="text" id="deviceIdAct" formControlName="deviceId" class="form-control form-control-sm">
+        </div>
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-primary ml-3 btn-sm" (click)="generateIdActivationReq()">Generate id</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="deviceTypeAct" class="col-sm-2 col-form-label">Device type</label>
+        <div class="col-sm-4">
+          <input type="text" id="deviceTypeAct" formControlName="deviceType" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="deviceBrandAct" class="col-sm-2 col-form-label">Device brand</label>
+        <div class="col-sm-4">
+          <input type="text" id="deviceBrandAct" formControlName="deviceBrand" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="appNameAct" class="col-sm-2 col-form-label">App name</label>
+        <div class="col-sm-4">
+          <input type="text" id="appNameAct" formControlName="appName" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="appVersionAct" class="col-sm-2 col-form-label">App version</label>
+        <div class="col-sm-4">
+          <input type="text" id="appVersionAct" formControlName="appVersion" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="usernameAct" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-4">
+          <input type="text" id="usernameAct" formControlName="username" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="passwordAct" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-4">
+          <input type="password" id="passwordAct" formControlName="password" class="form-control form-control-sm" autocomplete="new-password">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="activationCode" class="col-sm-2 col-form-label">Activation code</label>
+        <div class="col-sm-4">
+          <input type="text" id="activationCode" formControlName="activationCode" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="publicKey" class="col-sm-2 col-form-label">Public key</label>
+        <div class="col-sm-4">
+          <input type="text" id="publicKey" formControlName="publicKey" class="form-control form-control-sm">
+        </div>
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-primary btn-sm" (click)="generatePublickKey()">Generate key</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="languageAct" class="col-sm-2 col-form-label">Language</label>
+        <div class="col-sm-4">
+          <select id="languageAct" formControlName="language" class="form-control form-control-sm">
+            <option *ngFor="let lang of languages" [value]="lang">{{lang}}</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success btn-sm" [disabled]="!activationRequestForm.valid">Fill request</button>
+      <button type="button" class="btn btn-warning btn-sm" (click)="onResetActivationRequest()">Reset Data</button>
+    </form>
   </div>
+  <div class="tab-pane container fade" id="login">
+    <form [formGroup]="loginRequestForm" (ngSubmit)="onSubmitLoginRequest()">
+      <div class="form-group row">
+        <label for="securityLevelLogin" class="col-sm-2 col-form-label">Security level</label>
+        <div class="col-sm-4">
+          <input type="text" id="securityLevelLogin" formControlName="securityLevel" class="form-control form-control-sm ml-3">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="osLogin" class="col-sm-2 col-form-label">Os</label>
+        <div class="col-sm-4">
+          <input type="text" id="osLogin" formControlName="os" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="osVersionLogin" class="col-sm-2 col-form-label">Os version</label>
+        <div class="col-sm-4">
+          <input type="text" id="osVersionLogin" formControlName="osVersion" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="deviceIdLogin" class="col-sm-2 col-form-label">Device id</label>
+        <div class="col-sm-4">
+          <input type="text" id="deviceIdLogin" formControlName="deviceId" class="form-control form-control-sm">
+        </div>
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-primary btn-sm ml-3" (click)="generateIdLoginReq()">Generate id</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="deviceTypeLogin" class="col-sm-2 col-form-label">Device type</label>
+        <div class="col-sm-4">
+          <input type="text" id="deviceTypeLogin" formControlName="deviceType" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="deviceBrandLogin" class="col-sm-2 col-form-label">Device brand</label>
+        <div class="col-sm-4">
+          <input type="text" id="deviceBrandLogin" formControlName="deviceBrand" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="appNameLogin" class="col-sm-2 col-form-label">App name</label>
+        <div class="col-sm-4">
+          <input type="text" id="appNameLogin" formControlName="appName" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="appVersionLogin" class="col-sm-2 col-form-label">App version</label>
+        <div class="col-sm-4">
+          <input type="text" id="appVersionLogin" formControlName="appVersion" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="usernameLogin" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-4">
+          <input type="text" id="usernameLogin" formControlName="username" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="passwordLogin" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-4">
+          <input type="password" id="passwordLogin" formControlName="password" class="form-control form-control-sm" autocomplete="new-password">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="languageLogin" class="col-sm-2 col-form-label">Language</label>
+        <div class="col-sm-4">
+          <select id="languageLogin" formControlName="language" class="form-control form-control-sm">
+            <option *ngFor="let lang of languages" [value]="lang">{{lang}}</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success btn-sm" [disabled]="!loginRequestForm.valid">Fill request</button>
+      <button type="button" class="btn btn-success btn-sm" (click)="onLookupCertificate()">Lookup Certificate</button>
+      <button type="button" class="btn btn-warning btn-sm" (click)="onResetLoginRequest()">Reset Data</button>
+    </form>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="row mb-3">
+    <form [formGroup]="requestXMLForm" (ngSubmit)="onSubmitRequest()" class="w-100">
+      <div class="card">
+        <h6 class="card-header">Request XML</h6>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="certificate">Certificate</label>
+            <input type="text" id="certificate" formControlName="certificate" class="form-control form-control-sm w-100">
+          </div>
+          <div class="form-group">
+            <label for="requestXML">Request XML</label>
+            <textarea id="requestXML" cols="30" rows="10" formControlName="requestXML" class="form-control"></textarea>
+          </div>
+          <button type="submit" class="btn btn-success btn-sm" [disabled]="!requestXMLForm.valid">Submit</button>
+          <button type="button" class="btn btn-warning btn-sm" (click)="onParseRequest()">Parse</button>
+          <button type="button" class="btn btn-warning btn-sm" (click)="onResetRequestForm()">Reset Data</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row mb-3">
+    <div class="card w-100">
+      <h6 class="card-header">Response XML</h6>
+      <div class="card-body">
+        <div class="form-group">
+          <textarea id="responseXML" cols="30" rows="10" class="form-control">{{responseXML}}</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="errors.length" class="row mb-3">
+    <div class="card w-100">
+      <h6 class="card-header">Errors</h6>
+      <div class="card-body">
+        <span class="d-block text-danger" *ngFor="let error of errors">{{error}}</span>
+      </div>
+    </div>
+  </div>
+</div>

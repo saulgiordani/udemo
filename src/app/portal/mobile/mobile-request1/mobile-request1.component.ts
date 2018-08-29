@@ -25,24 +25,15 @@ export class MobileRequest1Component implements OnInit {
   }
 
   private initForm() {
-    let username: string;
-    let password: string;
-    let app: string = 'app';
-    let appVersion: string = 'appVersion';
-    let os: string = 'os';
-    let osVersion: string = 'osVersion';
-    let deviceId: string = 'deviceId';
-    let deviceType: string = 'deviceType';
-
     this.mobileRequestForm = new FormGroup({
-      'username' : new FormControl(username, Validators.required),
-      'password' : new FormControl(password, Validators.required),
-      'app' : new FormControl(app, Validators.required),
-      'appVersion' : new FormControl(appVersion, Validators.required),
-      'os' : new FormControl(os, Validators.required),
-      'osVersion' : new FormControl(osVersion, Validators.required),
-      'deviceId' : new FormControl(deviceId, Validators.required),
-      'deviceType' : new FormControl(deviceType, Validators.required)
+      'username' : new FormControl('', Validators.required),
+      'password' : new FormControl('', Validators.required),
+      'app' : new FormControl('app', Validators.required),
+      'appVersion' : new FormControl('appVersion', Validators.required),
+      'os' : new FormControl('os', Validators.required),
+      'osVersion' : new FormControl('osVersion', Validators.required),
+      'deviceId' : new FormControl('deviceId', Validators.required),
+      'deviceType' : new FormControl('deviceType', Validators.required)
     });
   }
 

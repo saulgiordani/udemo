@@ -13,4 +13,24 @@ export class MobileService {
     console.log(mobileRequest);
   }
 
+  submitActivationRequest() {
+
+  }
+
+  submitLoginRequest() {
+
+  }
+
+  lookupcertificate() {
+
+  }
+
+  submitRequest() {
+
+  }
+
+  parseRequest() {
+    
+  }
+
 }

@@ -28,20 +28,15 @@ export class EmergencyFacadeComponent implements OnInit {
   }
 
   private initObjectForm() {
-    let objectId: number;
-    let objectType: string;
-
     this.signObjectForm = new FormGroup({
-      'objectId': new FormControl(objectId, Validators.required),
-      'objectType': new FormControl(objectType, Validators.required)
+      'objectId': new FormControl(null, Validators.required),
+      'objectType': new FormControl('', Validators.required)
     });
   }
 
   private initObjectsForm() {
-    let objectType: string;
-
     this.signObjectsForm = new FormGroup({
-      'objectType': new FormControl(objectType, Validators.required)
+      'objectType': new FormControl('', Validators.required)
     });
   }
 

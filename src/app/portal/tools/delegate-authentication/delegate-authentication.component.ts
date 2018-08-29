@@ -22,18 +22,12 @@ export class DelegateAuthenticationComponent implements OnInit {
   }
 
   private initForm() {
-    let sessionSubtype: string = '';
-    let sessionId: number;
-    let randomSessionId: number;
-    let userId: number;
-    let password: string = '';
-
     this.delegateForm = new FormGroup({
-      'sessionSubtype' : new FormControl(sessionSubtype, Validators.required),
-      'sessionId': new FormControl(sessionId, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      'randomSessionId' : new FormControl(randomSessionId, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      'userId' : new FormControl(userId, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      'password' : new FormControl(password, Validators.required)
+      'sessionSubtype' : new FormControl('', Validators.required),
+      'sessionId': new FormControl(null, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      'randomSessionId' : new FormControl(null, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      'userId' : new FormControl(null, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      'password' : new FormControl('', Validators.required)
     });
   }
 
